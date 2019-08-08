@@ -1,13 +1,16 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+require('dotenv').config();
+
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 
 //open api keys required 
-const weatherKey = '' //openweathermap.org
-const mapboxKey = '' //mapbox.com
+const weatherKey = process.env.OPEN_WEATHER_API_KEY //openweathermap.org
+const mapboxKey = process.env.MAPBOX_API_KEY //mapbox.com
+console.log("mapboxKey: "+mapboxKey)
 const language = 'en'
 
 const app = express()
