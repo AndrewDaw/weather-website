@@ -1,5 +1,6 @@
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const dayTemps = require('./utils/daytemps')
 
 require('dotenv').config();
 
@@ -82,21 +83,36 @@ app.get('/weather', (req, res) => {
                 temp,
                 given_address: req.query.address
             })
-
-        })
-        
-             
+        })      
     })
-        
-   
-
-
-   
-
 })
-app.get('/products', (req,res) =>{ 
-    
-    
+
+
+app.get('/day-temps', (req, res) => {
+    if (!req.query.address){
+        return res.send({
+            error: 'you must provide an address'
+        })
+    }
+
+    geocode(req.query.address, mapboxKey, language, (error, {lat, lng} = {}) => {
+
+        
+        if(error){
+            return res.send({error})
+        }
+        dayTemps(lat, lng,
+                weatherKey, language, (error, {tempMorn, tempLunch, tempEve}) => {
+            if(error){
+                return res.send({error})
+            }
+            res.send({
+                tempMorn,
+                tempLunch,
+                tempEve
+            })
+        })      
+    })
 })
 
 app.get('/help/*',(req,res) => {
