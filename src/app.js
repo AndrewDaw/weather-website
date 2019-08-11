@@ -48,7 +48,7 @@ app.get('/about', (req, res) => {
          +" Wellington region of New Zealand. This is a little web app I made to play"
          +" around with some new tools and languages. It is written primarily in javascript"
          +" with node.js. It uses openweather.org and mapbox.com for weather and geocoding, npm libraries express, handlebars, path, and request"
-         +" for the server, views, and making http calls. It is deployed and hosted on heroku servers. The code can also be found on github.com/AndrewDaw/weather-website"
+         +" for the server, views, and making http calls. It is deployed and hosted via heroku.com's cloud services. The code can also be found on github.com/AndrewDaw/weather-website"
 
     })
 })
@@ -57,7 +57,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: "Help",
         name,
-        message: "Type your the name of a town or city in the search box on the"+
+        message: "Type the name of a town or city in the search box on the"+
         " weather page to get started. If the location is wrong try adding the name"+
         " of the country, region, or postal code."
     })
