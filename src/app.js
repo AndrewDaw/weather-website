@@ -46,7 +46,10 @@ app.get('/about', (req, res) => {
         name,
         message: "Hi im andrew, a software developer currently living in the"
          +" Wellington region of New Zealand. This is a little web app I made to play"
-         +" around with node.js"
+         +" around with some new tools and languages. It is written primarily in javascript"
+         +" with node.js. It uses openweather.org and mapbox.com for weather and geocoding, npm libraries express, handlebars, path, and request"
+         +" for the server, views, and making http calls. It is deployed and hosted on heroku servers. The code can also be found on github.com/AndrewDaw/weather-website"
+
     })
 })
 
