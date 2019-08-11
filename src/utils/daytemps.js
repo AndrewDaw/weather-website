@@ -14,10 +14,13 @@ const dayTemps = (lat, lng, weatherKey, language, callback) => {
         } else if (body.cod === '400'){
             callback('Unable to find location', undefined)
         }else{
+const utNow = Math.floor(new Date() / 1000);
+const utPlus = utNow + 87000
             callback(undefined, {
-            tempMorn : body.list[0].main.temp,
-            tempLunch: body.list[2].main.temp,
-            tempEve: body.list[4].main.temp
+
+                // const keepNotes = notes.filter((note) => note.title !== title)
+
+            temps : body.list.filter((forecast) => forecast.dt > utNow && forecast.dt < utPlus)
             })
         }
     

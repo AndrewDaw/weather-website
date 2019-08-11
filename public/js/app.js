@@ -33,7 +33,23 @@ weatherForm.addEventListener('submit', (e) => {
                 messageTwo.textContent =''
                 messageThree.textContent =''
             }else{
-                messageThree.textContent = 'Morning:'+data.tempMorn + 'C Lunch:'+data.tempLunch + 'C Evening:'+data.tempEve+'C'
+                messageThree.textContent=''
+                var msg = ''
+                var re = /\d\d[:]\d\d/
+                for(i = 0; i < 6; i++){
+                    const time = re.exec(new Date(data.temps[i].dt*1000))[0]
+                    const temp = data.temps[i].main.temp
+                    const weather = data.temps[i].weather[0].description
+                    msg = time + " : " + temp +"C with " + weather+". "
+
+                    var para = document.createElement("p");
+                    node = document.createTextNode(msg);
+                    para.appendChild(node);
+
+                    
+                    messageThree.appendChild(para);
+                }
+                
             }
         })
     })

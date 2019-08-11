@@ -43,7 +43,10 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {
         title: "About",
-        name
+        name,
+        message: "Hi im andrew, a software developer currently living in the"
+         +" Wellington region of New Zealand. This is a little web app I made to play"
+         +" around with node.js"
     })
 })
 
@@ -51,8 +54,9 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: "Help",
         name,
-        message: "This a help page where you will find helpful"+ 
-        "information to help you"
+        message: "Type your the name of a town or city in the search box on the"+
+        " weather page to get started. If the location is wrong try adding the name"+
+        " of the country, region, or postal code."
     })
 })
 
@@ -101,14 +105,12 @@ app.get('/day-temps', (req, res) => {
             return res.send({error})
         }
         dayTemps(lat, lng,
-                weatherKey, language, (error, {tempMorn, tempLunch, tempEve}) => {
+                weatherKey, language, (error, {temps}) => {
             if(error){
                 return res.send({error})
             }
             res.send({
-                tempMorn,
-                tempLunch,
-                tempEve
+                temps
             })
         })      
     })
