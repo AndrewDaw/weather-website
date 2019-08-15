@@ -2,7 +2,7 @@ const request = require('request')
 
 const dayTemps = (lat, lng, weatherKey, language, callback) => {
     const url = 
-    'http://api.openweathermap.org/data/2.5/forecast?lat='+ encodeURIComponent(lat) +
+    'https://api.openweathermap.org/data/2.5/forecast?lat='+ encodeURIComponent(lat) +
     '&lon='+ encodeURIComponent(lng) +
     '&appid=' + encodeURIComponent(weatherKey) +
     '&units=metric' +
